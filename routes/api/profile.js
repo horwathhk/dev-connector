@@ -5,7 +5,7 @@ const passport = require("passport");
 
 //load validation
 const validateProfileInput = require("../../validation/profile");
-const validateExperienceInput = require("../../validation/profile");
+const validateExperienceInput = require("../../validation/experience");
 const validateEducationInput = require("../../validation/education");
 
 //Load profile model
@@ -64,13 +64,12 @@ router.get("/handle/:handle", (req, res) => {
 //@desc get all profiles
 //@access public
 //@issue error wont send. Video 21, 10:00
-
 router.get("/all", (req, res) => {
   Profile.find()
-    .populate("users", ["name", "avatar"])
+    .populate("user", ["name", "avatar"])
     .then(profiles => {
       if (!profiles) {
-        errors.noprofile = "there are not profiles";
+        errors.noprofile = "there are no profiles";
         return res.status(404).json(errors);
       }
 
@@ -177,6 +176,7 @@ router.post(
     //check validation
     if (!isValid) {
       //return any
+      console.log("from api error");
       return res.status(400).json(errors);
     }
 

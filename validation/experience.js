@@ -8,10 +8,10 @@ module.exports = function validateExperienceInput(data) {
   data.company = !isEmpty(data.company) ? data.company : "";
   data.from = !isEmpty(data.from) ? data.from : "";
 
-  if (!Validator.isEmpty(data.title)) {
+  if (Validator.isEmpty(data.title)) {
     errors.title = "Job title is Invalid";
   }
-  if (!Validator.isEmpty(data.company)) {
+  if (Validator.isEmpty(data.company)) {
     errors.company = "Company field is Invalid";
   }
   if (Validator.isEmpty(data.from)) {

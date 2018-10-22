@@ -9,10 +9,10 @@ module.exports = function validateProfileInput(data) {
   data.skills = !isEmpty(data.skills) ? data.skills : "";
 
   if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {
-    errors.handle = "handle needs to be between 2 and 4 characters";
+    errors.handle = "POOOOP handle needs to be between 2 and 4 characters";
   }
   if (Validator.isEmpty(data.handle)) {
-    errors.handle = "profile handle is required";
+    errors.handle = "pooop profile handle is required";
   }
 
   if (Validator.isEmpty(data.status)) {
